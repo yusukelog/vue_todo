@@ -4,12 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --mode development",
+    "dev": "webpack --mode development",
+    "loach": "webpack --mode production",
     "watch": "webpack --mode development --watch"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "vue": "^2.6.10",
     "webpack": "^4.38.0",

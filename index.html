@@ -41,12 +41,12 @@
     <body>
         <div id="app">
             <transition name="fade">
-                <div id="flush-message" v-show="fsh">リストに登録されました！</div>
+                <div v-cloak id="flush-message" v-show="fsh">リストに登録されました！</div>
             </transition>
-            <form @submit.prevent>
-                <div>
-                    <button @click="allRemove">All Clear!</button>
-                </div>
+            <div>
+                <button @click="allRemove">All Clear!</button>
+            </div>
+            <form @submit.prevent action="/" method="POST">
                 <input type="text" v-model="newItem">
                 <button @click="addItem">add</button>
                 <transition name="fade">
