@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <style>
+        ul{
+            list-style: none;
+        }
+        span.done{
+            text-decoration: line-through;
+            color: #999;
+        }
+        .alert{
+            color: #ff0000;
+        }
+        [v-cloak] {
+            display:none;
+        }
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 1s;
+        }
+        .fade-enter, .fade-leave-to {
+            opacity: 0;
+        }
+        .fade-enter-to,.fade-leave{
+            opacity: 1;
+        }
+        #flush-message{
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: rgba(68, 255, 23, 0.9);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+    <body>
+        <div id="app">
+            <transition name="fade">
+                <div id="flush-message" v-show="fsh">リストに登録されました！</div>
+            </transition>
+            <form @submit.prevent>
+                <div>
+                    <button @click="allRemove">All Clear!</button>
+                </div>
+                <input type="text" v-model="newItem">
+                <button @click="addItem">add</button>
+                <transition name="fade">
+                    <div v-cloak v-show="validate" class="alert">{{message}}</div>
+                </transition>
+                <ul v-cloak>
+                    <li v-for="(todo,i) in todos">
+                        <input type="checkbox" v-model="todo.isDone" :id="['num-' + i]">
+                        <label :for="['num-' + i]">
+                            <span :class="{done:todo.isDone}" v-cloak>{{todo.item}}</span>
+                        </label>
+                        <button @click="delItem(i)">del</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <script src="dist/main.js"></script>
+    </body>
+</html>
