@@ -48,7 +48,7 @@
             </div>
             <form @submit.prevent action="/" method="POST">
                 <input type="text" v-model="newItem">
-                <button @click="addItem">add</button>
+                <button @click="addItem" class="btn btn-secondary">add</button>
                 <transition name="fade">
                     <div v-cloak v-show="validate" class="alert">{{message}}</div>
                 </transition>
@@ -58,7 +58,7 @@
                         <label :for="['num-' + i]">
                             <span :class="{done:todo.isDone}" v-cloak>{{todo.item}}</span>
                         </label>
-                        <button @click="delItem(i)">del</button>
+                        <button @click="delItem(i)" class="btn btn-dark">del</button>
                     </li>
                 </ul>
             </form>
